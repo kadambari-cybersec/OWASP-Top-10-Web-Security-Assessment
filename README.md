@@ -1,4 +1,5 @@
-# SQL-Injection-Exploitation-Mitigation-Lab
+# owasp-top10-web-security-assessment
+# Module 1:-SQL-Injection
 A controlled web application security assessment project demonstrating SQL Injection exploitation, authenticated access validation, post-exploitation analysis, and defensive mitigation techniques using Kali Linux, Metasploitable2, DVWA, Nmap, and Burp Suite.
 
 ## Phase 1 - Reconnaissance
