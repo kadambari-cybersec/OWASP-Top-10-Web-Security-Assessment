@@ -20,6 +20,9 @@ Detected services:
 Port 22 (SSH)
 Port 80 (HTTP)
 
+## Evidence
+![Nmap Scan](screenshots/01-nmap-scan.png)
+
 ## Phase 2 - Web Application Exploitation
 Burp Suite was used to intercept HTTP requests and identify SQL Injection vulnerabilities.
 
