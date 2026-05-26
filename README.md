@@ -3,13 +3,18 @@
 A controlled web application security assessment project demonstrating SQL Injection exploitation, HTTP request interception, authentication bypass techniques, Python-based automation, and defensive mitigation strategies using Kali Linux, Metasploitable2, DVWA, Nmap, and Burp Suite.
 
 ## Lab setup
-|component & purpose|
+component & purpose
+ Kali Linux | Attacker machine used for security testing 
+ Metasploitable2 | Vulnerable target machine 
+ DVWA | Vulnerable web application for SQL Injection testing 
+ Burp Suite | HTTP request interception and analysis 
+ Nmap | Network service enumeration and scanning 
 
 ## Phase 1 - Reconnaissance
 Nmap service enumeration identified exposed services on the target machine.
 
 Command Used
-nmap -sV 192.168.29.130. Scan Result
+Bash:-nmap -sV 192.168.29.130. Scan Result
 
 Detected services:
 Port 22 (SSH)
