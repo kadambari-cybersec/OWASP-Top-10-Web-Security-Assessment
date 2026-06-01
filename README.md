@@ -24,8 +24,14 @@ Port 80 (HTTP)
 ![Nmap Scan](screenshots/01-nmap-scan.png)
 
 ## Phase 2 - Web Application Exploitation
-Burp Suite was used to intercept HTTP requests and identify SQL Injection vulnerabilities.
+The DVWA application was accessed through the HTTP service identified during reconnaissance. The application was reviewed to identify user input fields and potential attack surfaces.
 
-SQL Injection Payload
-1' OR '1'='1
-Exploitation Result
+# Activities Performed
+Accessed the DVWA web interface.
+Authenticated using valid credentials.
+Configured the security level to Low.
+Identified the SQL Injection module for further testing.
+Observed that the User ID parameter accepted unsanitized user input.
+
+# Evidence
+
