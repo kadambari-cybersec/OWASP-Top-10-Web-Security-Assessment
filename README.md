@@ -23,21 +23,70 @@ Port 80 (HTTP)
 ## Evidence
 ![Nmap Scan](screenshots/01-nmap-scan.png)
 
-## Phase 2 - Web Application Exploitation
-The DVWA application was accessed through the HTTP service identified during reconnaissance. The application was reviewed to identify user input fields and potential attack surfaces.
+## Phase 2 - Web Application Enumeration
 
-# Activities Performed
-Accessed the DVWA web interface.
-Authenticated using valid credentials.
-Configured the security level to Low.
-Identified the SQL Injection module for further testing.
-Observed that the User ID parameter accepted unsanitized user input.
+Objective
+To identify accessible web application components and potential attack surfaces for security testing.
+
+Activities Performed
+
+Accessed the DVWA web application through the HTTP service discovered during reconnaissance.
+Authenticated using valid application credentials.
+Navigated through the available DVWA modules.
+Configured the application security level to Low for testing purposes.
+Identified the SQL Injection module as a potential target for assessment.
 
 # Evidence
 ![DVWA Login Successful](screenshots/02-dvwa-login-successful.png)
 ![Security Level Low](screenshots/03-security-low.png)
+
+# OUTPUT
+The SQL Injection module was successfully identified and prepared for exploitation testing in the next phase.
+
+## Phase 3 - SQL Injection Exploitation
+Objective
+To verify whether the User ID parameter was vulnerable to SQL Injection attacks.
+
+Normal Application Behavior
+
+The value 1 was supplied to the User ID parameter. The application returned a single record associated with the specified user.
+
+# Evidence
 ![Normal Query](screenshots/04-normal-query.png)
+
+## SQL Injection Payload
+1' OR '1'='1
+
+Exploitation Result
+The payload altered the backend SQL query logic and caused the application to return all records from the users table, including multiple user accounts.
+
+OUTPUT
+First name: admin
+Surname: admin
+
+First name: Gordon
+Surname: Brown First
+
+name: Hack 
+Surname: Me
+
+First name: Pablo
+Surname: Picasso
+
+First name: Bob
+Surname: Smith
+
+Security Impact
+Unauthorized disclosure of database records.
+Exposure of sensitive user information.
+Bypass of intended query restrictions.
+# Evidence
 ![SQL Injection Successful](screenshots/05-sql-sucessful.png)
+
+# OUTPUT
+The SQL Injection vulnerability was successfully exploited, demonstrating that unsanitized user input could manipulate database queries and expose unauthorized information.
+
+
 
 
 
