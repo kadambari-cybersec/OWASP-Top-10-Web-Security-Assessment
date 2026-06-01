@@ -34,5 +34,8 @@ Identified the SQL Injection module for further testing.
 Observed that the User ID parameter accepted unsanitized user input.
 
 # Evidence
-![Nmap Scan](screenshots/02-dvwa-login-succesful.png)
+!screenshots/02-dvwa login succesful.png
+
+
+
 
