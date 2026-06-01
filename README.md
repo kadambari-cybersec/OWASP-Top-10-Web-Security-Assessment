@@ -35,8 +35,9 @@ Observed that the User ID parameter accepted unsanitized user input.
 
 # Evidence
 ![DVWA Login Successful](screenshots/02-dvwa-login-successful.png)
-
-
+![Security Level Low](screenshots/03-security-low.png)
+![Normal Query](screenshots/04-normal-query.png)
+![SQL Injection Successful](screenshots/05-sql-sucessful.png)
 
 
 
