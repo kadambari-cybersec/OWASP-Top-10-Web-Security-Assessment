@@ -126,3 +126,44 @@ The DVWA Brute Force module was accessed to understand how the authentication pr
 Different invalid credentials were tested to observe application behavior. The same error message was displayed for both invalid usernames and incorrect passwords, indicating that username enumeration was not observed during testing.
 
 # Evidence
+![Incorrect Login Authentication](screenshots/08-incorrect-login-authentication.png)
+
+# outcome
+The authentication mechanism was identified, and no username enumeration was observed.
+
+# Phase 2 - Weak Password Testing
+Common credentials were tested against the login form. The username admin and password password successfully authenticated and provided access to the protected area.
+
+# Evidence
+![Weak Password](screenshots/11-weak-password.png)
+
+# Outcome
+A weak password was accepted by the application, which could increase the risk of unauthorized access.
+
+# Phase 3 - Authentication Bypass Testing
+An authentication bypass attempt was performed using the payload:
+admin' --
+The application returned an SQL error and access was not granted.
+ 
+ # Evidence
+![Authentication Bypass Testing](screenshots/09-Authentication-bypass-testing.png)
+
+# Outcome
+The bypass attempt was unsuccessful, but the application exposed database error information.
+
+# Phase 4 - Mitigation & Remediation
+To improve authentication security, the following controls are recommended:
+Use strong passwords.
+Enable account lockout after multiple failed login attempts.
+Implement CAPTCHA protection.
+Enable Multi-Factor Authentication (MFA).
+Avoid displaying database error messages.
+
+# Outcome
+These controls can help reduce the risk of brute-force attacks and unauthorized access.
+
+## Conclusion
+In this module, I tested the authentication functionality of DVWA and identified a weak password issue. I also performed authentication bypass testing and learned how authentication weaknesses can affect web application security.
+
+## Module 3- File Inclusion / Path Traversal
+
