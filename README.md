@@ -118,7 +118,11 @@ The mitigation test demonstrated that additional security controls can significa
 In this project, I successfully identified and exploited a SQL Injection vulnerability in DVWA and then tested mitigation techniques to reduce the risk. This assessment improved my understanding of web application security testing, vulnerability analysis, and secure coding practices.
 
 ## Module 2- Authentication
+# Objective
+The objective of this module was to evaluate the authentication mechanism implemented in DVWA and identify weaknesses related to user authentication and password security.
 
+# Phase 1 - Authentication Enumeration
+The DVWA Brute Force module was accessed to understand how the authentication process works. The login page contained username and password input fields and allowed users to submit credentials for authentication.
+Different invalid credentials were tested to observe application behavior. The same error message was displayed for both invalid usernames and incorrect passwords, indicating that username enumeration was not observed during testing.
 
-
-
+# Evidence
