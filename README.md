@@ -105,9 +105,19 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
  At the Low security level, the payload successfully returned all records from the users table. After increasing the security level to Medium, the same payload no longer produced the previous result and generated a database error instead.
 
  # Evidence
- 
+ ![Security Level Changed](screenshots/06-secuirty-changed.png)
+![Mitigation Successful](screenshots/07-mitigation-successful.png)
 
+# Security Impact
+The mitigation reduced the effectiveness of the SQL Injection attack by introducing additional input handling controls. Although the application still displayed an error message, the attack no longer disclosed all user records.
 
+# Outcome
+The mitigation test demonstrated that additional security controls can significantly reduce the risk of SQL Injection attacks and improve the overall security posture of the application.
+
+## conclusion
+In this project, I successfully identified and exploited a SQL Injection vulnerability in DVWA and then tested mitigation techniques to reduce the risk. This assessment improved my understanding of web application security testing, vulnerability analysis, and secure coding practices.
+
+## Module 2- Authentication
 
 
 
