@@ -44,7 +44,7 @@ Identified the SQL Injection module as a potential target for assessment.
 The SQL Injection module was successfully identified and prepared for exploitation testing in the next phase.
 
 ## Phase 3 - SQL Injection Exploitation
-Objective
+# Objective
 To verify whether the User ID parameter was vulnerable to SQL Injection attacks.
 
 Normal Application Behavior
@@ -86,6 +86,26 @@ Bypass of intended query restrictions.
 # OUTPUT
 The SQL Injection vulnerability was successfully exploited, demonstrating that unsanitized user input could manipulate database queries and expose unauthorized information.
 
+## Phase 4 - Mitigation& Remediation
+# Objective
+To evaluate the effectiveness of security control against the previously identified SQL Injection vulnerability.
+
+# Activites performed
+Changed the DVWA security level from Low to Medium.
+Revisited the SQL Injection module.
+Retested the previously successful SQL Injection payload.
+
+Payload Tested
+1' OR '1'='1
+
+# Output
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\' OR \'1\'=\'1'
+
+ # Result
+ At the Low security level, the payload successfully returned all records from the users table. After increasing the security level to Medium, the same payload no longer produced the previous result and generated a database error instead.
+
+ # Evidence
+ 
 
 
 
