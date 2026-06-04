@@ -165,5 +165,90 @@ These controls can help reduce the risk of brute-force attacks and unauthorized 
 ## Conclusion
 In this module, I tested the authentication functionality of DVWA and identified a weak password issue. I also performed authentication bypass testing and learned how authentication weaknesses can affect web application security.
 
-## Module 3- File Inclusion / Path Traversal
+## Module 3- Path Traversal(Sensitive File Disclosure Assessment)
+# Objective
+
+The objective of this module was to test whether the File Inclusion feature in DVWA could be abused to access files outside the web application directory.
+ 
+ ## Phase 1 – Exploring the File Inclusion Module
+
+I logged into DVWA and set the security level to Low. After opening the File Inclusion module, I noticed that the application loaded pages using a URL parameter. This suggested that user input was being used to determine which file should be displayed.
+
+## Evidence
+![Before Testing File](screenshots/12-before-testing-file.png)
+
+## Outcome
+
+The application appeared to be using user-controlled input for file loading, making it a possible target for Path Traversal testing.
+
+## Phase 2 – Initial Testing
+I started testing directory traversal sequences to see if files outside the application folder could be accessed.
+
+Payload Used
+../../../etc/passwd
+
+Result
+The application returned an error and did not display the file contents.
+ 
+ ## Evidence
+ ![Exploit Path Traversal](screenshots/13-exploite-path-traversal.png)
+
+## Outcome
+The attempt failed because the traversal depth was not enough to reach the target file. However, the application still tried to process the supplied path, indicating that file inclusion was occurring.
+
+## Phase 3 – Successful Exploitation
+I increased the traversal depth and tested again.
+
+Payload Used
+../../../../../../etc/passwd
+
+Result
+The application successfully displayed the contents of the Linux system file:
+
+## Evidence
+![Attack Successful](screenshots/15-attack-succesful.png)
+/etc/passwd
+Sample Output
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+www-data:x:33:33:www-data:/var/www:/bin/sh
+msfadmin:x:1000:1000:msfadmin:/home/msfadmin:/bin/bash
+Security Impact
+Access to sensitive system files.
+Disclosure of local user account information.
+Exposure of information that could help an attacker perform further attacks.
+
+## Outcome
+The Path Traversal vulnerability was successfully exploited, proving that files outside the intended web directory could be accessed.
+
+## Phase 4 – Mitigation & Recommendations
+To reduce the risk of Path Traversal vulnerabilities, the following controls should be implemented:
+Validate and sanitize user input.
+Block traversal sequences such as ../.
+Use an allowlist of approved files.
+Avoid displaying detailed error messages.
+Apply the principle of least privilege.
+ 
+ ## Outcome
+These controls can help prevent unauthorized file access and reduce information disclosure risks.
+
+# Conclusion
+
+In this module, I successfully identified and exploited a Path Traversal vulnerability in DVWA. An initial attempt failed due to insufficient traversal depth, but after modifying the payload, I was able to access the /etc/passwd file and view sensitive system information. This project improved my understanding of file inclusion vulnerabilities, directory traversal techniques, and secure input validation practices.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
