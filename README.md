@@ -207,6 +207,7 @@ The application successfully displayed the contents of the Linux system file:
 
 ## Evidence
 ![Attack Successful](screenshots/15-attack-succesful.png)
+aylo
 /etc/passwd
 Sample Output
 root:x:0:0:root:/root:/bin/bash
@@ -236,11 +237,136 @@ These controls can help prevent unauthorized file access and reduce information 
 
 In this module, I successfully identified and exploited a Path Traversal vulnerability in DVWA. An initial attempt failed due to insufficient traversal depth, but after modifying the payload, I was able to access the /etc/passwd file and view sensitive system information. This project improved my understanding of file inclusion vulnerabilities, directory traversal techniques, and secure input validation practices.
 
+## Module 4 - Command Injection
+# objective
+The application takes the user supplied input details and passes it directly to the operating system without any proper validiation or sanitixation.
 
+## Phase 1 - Reconnaissance
+# objective
+To identify the target and web services
 
+payload :- namp -sV 192.168.56.103 
 
+## Result -
+22/tcp open ssh
+80/tcp open http
 
+# Evidence
+![Command Injection Identification Phase](screenshots/16-command-injection-identification-phase.png)
 
+## outcome
+The target system was successfully enumerated. Open services including HTTP (Port 80) and SSH (Port 22) were identified and prepared for further assessment.
+
+## phase 2 - web application enumeration
+
+# objective
+Identify the Command Injection functionality within DVWA.
+
+Activity performed 
+
+Accessed DVWA through the web interface.
+Authenticated using valid credentials.
+Configured DVWA security level to Low.
+Navigated to the Command Injection module.
+Observed an input field designed to accept IP addresses for ping operations.
+
+# Evidence 
+![DVWA Login Successful](screenshots/dvwa-login-successful.png)
+![Security Low](screenshots/security-low.png)
+
+## outcome
+The Command Injection module was successfully identified and prepared for testing.
+
+## phase 3 - Command Injection Exploitation
+Objective
+To determine whether user-supplied input could execute unauthorized operating system commands.
+
+Normal function testing 
+
+Input
+127.0.0.1
+
+Output
+Successful ping response.
+
+## evidence 
+![Normal Func Testing](screenshots/17-normal-func-testing.png)
+
+## Test 1 – whoami
+
+Payload
+127.0.0.1; whoami
+
+Result
+The application returned the username "www-data".
+
+# Evidence 
+![CI Semicolon Whoami](screenshots/20-CI-%20semicolon-whoami.png)
+
+Analysis
+The additional command was executed by the operating system, confirming the presence of Command Injection.
+
+Test 2 – id
+
+Payload
+127.0.0.1 && id
+
+Result
+uid=33(www-data)
+gid=33(www-data)
+groups=33(www-data)
+
+##  Evidence 
+![CI && ID](screenshots/19-CI-%26%26-id.png)
+
+Analysis
+The application executed the id command and disclosed user and group information associated with the web
+
+Test 3 – hostname
+
+Payload
+127.0.0.1 | hostname
+
+## Evidence 
+![CI Pipe Hostname](screenshots/18-CI-pipe-hostname.png)
+
+Analysis
+
+Successful execution of the hostname command allowed disclosure of system identification information. This confirmed that the application was vulnerable to Command Injection and could expose details about the underlying host environment..
+
+Test 5 – uname -a
+
+Payload
+127.0.0.1; uname -a
+
+Analysis
+The command returned operating system and kernel details, demonstrating system information disclosure.
+
+## Phase 4 – Mitigation & Remediation
+ 
+ # Objective
+Evaluate the effectiveness of security controls against the identified vulnerability.
+
+Activities Performed
+
+Changed DVWA security level from Low to Medium.
+Retested previously successful payloads.
+Observed application behaviour after mitigation.
+
+Payload Tested
+127.0.0.1; whoami
+
+Result
+Describe exactly what happened in your lab.
+
+Security Impact
+The mitigation reduced the ability of attackers to execute arbitrary operating system commands through user-controlled input.
+
+## Outcome
+The implemented controls reduced the effectiveness of the Command Injection attack and improved application.
+
+# conclusion
+This assessment successfully demonstrated a Command Injection vulnerability within DVWA. Multiple operating system commands were executed through unsanitized user input, resulting in system information disclosure and user enumeration. Mitigation testing showed that additional security controls reduced the effectiveness of the attack. This project improved my understanding of web application security testing, operating system interaction, command execution risks, and secure input handling practices.
 
 
 
