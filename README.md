@@ -339,6 +339,9 @@ Test 5 – uname -a
 Payload
 127.0.0.1; uname -a
 
+# Evidence
+![CI Semicolon Uname -a](screenshots/21-CI-semicolon-unmae%20-a.png)
+
 Analysis
 The command returned operating system and kernel details, demonstrating system information disclosure.
 
